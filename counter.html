@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="./libraries/react.development.js" type="text/javascript"></script>
+    <script src="./libraries/react-dom.development.js" type="text/javascript"></script>
+    <script src="./libraries/babel.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+    class Counter extends React.Component{
+        state = {count: 0};
+        increaseHandler = ()=> this.setState(previousState => ({count: previousState.count+1}));
+
+        decreaseHandler = ()=> this.setState(previousState => ({count: previousState.count-1}))
+
+        render(){
+            return (
+                <div>
+                    <h1>{this.state.count}</h1>
+                    <button onClick={this.increaseHandler}>Increase (+1)</button>
+                    <button onClick={this.decreaseHandler}>Decrease (-1)</button>
+                </div>
+            );
+        }
+    }
+
+    const container = ReactDOM.createRoot(document.getElementById('container'));
+    container.render(<Counter />);
+</script>
+
+</body>
+</html>
